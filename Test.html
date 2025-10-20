@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ebuns Vault - Your Digital Marketing Command Center</title>
+    <link rel="icon" href="favicon.ico" sizes="any">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Use Poppins from index.html to transfer color/font scheme -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Transfer color scheme: Poppins font and lighter site background similar to index.html */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f5f5f4; /* light stone background */
+            color: #1f2937; /* dark text */
+        }
+        .header-shadow {
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+        }
+        /* Use index.html hero gradient (linear, blue-ish to dark) */
+        .hero-gradient {
+            background: linear-gradient(135deg, #1e3a8a 0%, #1c1917 100%);
+        }
+        .card-hover-effect {
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+        .card-hover-effect:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 25px -5px rgba(255, 215, 0, 0.1), 0 8px 10px -6px rgba(255, 215, 0, 0.1);
+        }
+        .glow-button {
+            transition: all 0.3s ease;
+            box-shadow: 0 0 10px rgba(250, 204, 21, 0.4), 0 0 20px rgba(250, 204, 21, 0.2);
+        }
+        .glow-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 15px rgba(250, 204, 21, 0.6), 0 0 30px rgba(250, 204, 21, 0.3);
+        }
+        .section-title-underline {
+            position: relative;
+            display: inline-block;
+        }
+        .section-title-underline::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            bottom: -10px;
+            width: 60px;
+            height: 4px;
+            background-color: #FACC15; /* yellow-400 */
+            border-radius: 2px;
+        }
+        /* Mobile Menu Transitions */
+        #mobile-menu.hidden {
+            display: block; /* Keep it in the layout for transition */
+            max-height: 0;
+            padding-top: 0;
+            padding-bottom: 0;
+            overflow: hidden;
+        }
+        #mobile-menu {
+            transition: max-height 0.5s ease-in-out, padding 0.5s ease-in-out;
+            max-height: 500px; /* Adjust as needed */
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Header -->
+    <!-- Header transferred to light scheme from index.html -->
+    <header id="header" class="bg-white/80 backdrop-blur-lg sticky top-0 z-50 header-shadow">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold text-stone-800 tracking-wider">
+                <img src="https://via.placeholder.com/36x36.png?text=EV" alt="logo" class="inline-block align-middle mr-2">EBUNS VAULT
+            </a>
+            <nav class="hidden md:flex items-center space-x-8">
+                <a href="#home" class="text-stone-600 hover:text-blue-900 transition duration-300">Home</a>
+                <a href="#guides" class="text-stone-600 hover:text-blue-900 transition duration-300">Guides</a>
+                <a href="javascript:void(0);" onclick="showPopup('contactPopup')" class="text-stone-600 hover:text-blue-900 transition duration-300">Contact</a>
+            </nav>
+            <a href="#guides" class="hidden md:inline-block bg-amber-500 text-blue-900 font-bold py-2 px-5 rounded-lg hover:bg-amber-400 transition duration-300 glow-button">
+                Explore Guides
+            </a>
+            <button id="mobile-menu-button" class="md:hidden text-stone-800 focus:outline-none" aria-label="Toggle menu">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden px-6 pt-2 pb-4 space-y-2 bg-white">
+            <a href="#home" class="block text-stone-600 hover:text-blue-900 transition duration-300">Home</a>
+            <a href="#guides" class="block text-stone-600 hover:text-blue-900 transition duration-300">Guides</a>
+            <a href="javascript:void(0);" onclick="showPopup('contactPopup'); toggleMobileMenu();" class="block text-stone-600 hover:text-blue-900 transition duration-300">Contact</a>
+             <a href="#guides" class="block bg-amber-500 text-blue-900 font-bold py-2 px-5 rounded-lg hover:bg-amber-400 transition duration-300 text-center mt-2">
+                Explore Guides
+            </a>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="hero-gradient relative overflow-hidden">
+            <div class="absolute inset-0 bg-cover bg-center opacity-10" style="background-image: url('https://images.unsplash.com/photo-1557804506-669a67965ba0?q=80&w=2670&auto=format&fit=crop');"></div>
+             <div class="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-transparent"></div>
+            <div class="container mx-auto px-6 py-24 md:py-32 lg:py-40 text-center relative z-10">
+                <h1 class="text-4xl md:text-6xl lg:text-7xl font-extrabold text-white leading-tight mb-4">
+                    Unlock Your Digital <span class="text-yellow-400">Potential</span>
+                </h1>
+                <p class="text-lg md:text-xl text-neutral-300 max-w-3xl mx-auto mb-8">
+                    Welcome to Ebuns Vault. We provide expert-crafted digital guides and resources to elevate your marketing skills, boost your income, and help you dominate the online space.
+                </p>
+                <div class="flex justify-center">
+                    <a href="#guides" class="bg-amber-500 text-blue-900 font-bold py-3 px-8 rounded-lg text-lg hover:bg-amber-400 transition duration-300 glow-button">
+                        Start Learning
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Digital Guides Section -->
+        <section id="guides" class="py-20 md:py-28 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold text-stone-800 mb-4 section-title-underline">
+                        Our Digital Guides
+                    </h2>
+                    <p class="text-stone-600 max-w-2xl mx-auto">
+                        Actionable strategies, proven blueprints, and powerful templates. Your journey to mastery starts here.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+                    <!-- Guide Card 1 -->
+                    <div class="bg-white rounded-xl overflow-hidden flex flex-col border border-gray-200 card-hover-effect">
+                        <img src="https://images.unsplash.com/photo-1620325867582-51b227521558?q=80&w=2572&auto=format&fit=crop" alt="The UGC Handbook" class="h-48 w-full object-cover">
+                        <div class="p-6 flex flex-col flex-grow">
+                            <h3 class="font-bold text-xl text-stone-800 mb-2">The UGC Handbook</h3>
+                            <p class="text-stone-600 text-sm mb-4 flex-grow">Harness the power of user-generated content to build authentic brands and drive explosive growth.</p>
+                            <button onclick="showPopup('ugcPopup')" class="mt-auto bg-amber-500 text-blue-900 font-semibold py-2 px-4 rounded-lg text-center hover:bg-amber-400 transition-colors duration-300">Get the Guide</button>
+                        </div>
+                    </div>
+                    <!-- Guide Card 2 -->
+                    <div class="bg-white rounded-xl overflow-hidden flex flex-col border border-gray-200 card-hover-effect">
+                        <img src="https://images.unsplash.com/photo-1556740738-b6a63e2775df?q=80&w=2670&auto=format&fit=crop" alt="Affiliate Marketing Guide" class="h-48 w-full object-cover">
+                        <div class="p-6 flex flex-col flex-grow">
+                            <h3 class="font-bold text-xl text-stone-800 mb-2">The Truth About Affiliate Marketing</h3>
+                            <p class="text-stone-600 text-sm mb-4 flex-grow">Cut through the noise. Learn the real strategies for building a profitable affiliate marketing business from scratch.</p>
+                            <button onclick="showPopup('affiliatePopup')" class="mt-auto bg-amber-500 text-blue-900 font-semibold py-2 px-4 rounded-lg text-center hover:bg-amber-400 transition-colors duration-300">Get the Guide</button>
+                        </div>
+                    </div>
+                    <!-- Guide Card 3 -->
+                    <div class="bg-white rounded-xl overflow-hidden flex flex-col border border-gray-200 card-hover-effect">
+                        <img src="https://images.unsplash.com/photo-1677756119517-756a188d2d94?q=80&w=2670&auto=format&fit=crop" alt="ChatGPT Prompts" class="h-48 w-full object-cover">
+                        <div class="p-6 flex flex-col flex-grow">
+                            <h3 class="font-bold text-xl text-stone-800 mb-2">ChatGPT Prompts for Digital Marketing</h3>
+                            <p class="text-stone-600 text-sm mb-4 flex-grow">Unlock AI's potential with copy-paste prompts for SEO, social media, email campaigns, and more.</p>
+                            <button onclick="showPopup('chatgptPopup')" class="mt-auto bg-amber-500 text-blue-900 font-semibold py-2 px-4 rounded-lg text-center hover:bg-amber-400 transition-colors duration-300">Get the Guide</button>
+                        </div>
+                    </div>
+                    <!-- Guide Card 4 -->
+                    <div class="bg-white rounded-xl overflow-hidden flex flex-col border border-gray-200 card-hover-effect">
+                        <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=2670&auto=format&fit=crop" alt="Passion to Income" class="h-48 w-full object-cover">
+                        <div class="p-6 flex flex-col flex-grow">
+                            <h3 class="font-bold text-xl text-stone-800 mb-2">Turn Your Passion to Income Blueprint</h3>
+                            <p class="text-stone-600 text-sm mb-4 flex-grow">A step-by-step guide to monetizing your hobbies and expertise in the digital age.</p>
+                            <button onclick="showPopup('passionPopup')" class="mt-auto bg-amber-500 text-blue-900 font-semibold py-2 px-4 rounded-lg text-center hover:bg-amber-400 transition-colors duration-300">Get the Guide</button>
+                        </div>
+                    </div>
+                    <!-- Guide Card 5 -->
+                     <div class="bg-white rounded-xl overflow-hidden flex flex-col border border-gray-200 card-hover-effect">
+                        <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&w=2670&auto=format&fit=crop" alt="Secondary School Guide" class="h-48 w-full object-cover">
+                        <div class="p-6 flex flex-col flex-grow">
+                            <h3 class="font-bold text-xl text-stone-800 mb-2">Survive & Shine in Secondary School</h3>
+                            <p class="text-stone-600 text-sm mb-4 flex-grow">Navigate challenges and excel academically and socially with this essential student guide.</p>
+                            <button onclick="showPopup('schoolPopup')" class="mt-auto bg-amber-500 text-blue-900 font-semibold py-2 px-4 rounded-lg text-center hover:bg-amber-400 transition-colors duration-300">Get the Guide</button>
+                        </div>
+                    </div>
+                     <!-- Guide Card 6 -->
+                     <div class="bg-white rounded-xl overflow-hidden flex flex-col border border-gray-200 card-hover-effect">
+                        <img src="https://images.unsplash.com/photo-1542626991-a2f572aedfe8?q=80&w=2670&auto=format&fit=crop" alt="Goal-Setting Template" class="h-48 w-full object-cover">
+                        <div class="p-6 flex flex-col flex-grow">
+                            <h3 class="font-bold text-xl text-stone-800 mb-2">Goal-Setting Template</h3>
+                            <p class="text-stone-600 text-sm mb-4 flex-grow">A powerful, reusable template to define, track, and achieve your most ambitious goals.</p>
+                            <button onclick="showPopup('goalPopup')" class="mt-auto bg-amber-500 text-blue-900 font-semibold py-2 px-4 rounded-lg text-center hover:bg-amber-400 transition-colors duration-300">Get the Guide</button>
+                        </div>
+                    </div>
+                     <!-- Guide Card 7 -->
+                     <div class="bg-white rounded-xl overflow-hidden flex flex-col border border-gray-200 card-hover-effect">
+                        <img src="https://images.unsplash.com/photo-1696208172318-313c0138947a?q=80&w=2574&auto=format&fit=crop" alt="AI Monetization" class="h-48 w-full object-cover">
+                        <div class="p-6 flex flex-col flex-grow">
+                            <h3 class="font-bold text-xl text-stone-800 mb-2">AI Monetization</h3>
+                            <p class="text-stone-600 text-sm mb-4 flex-grow">Discover innovative ways to leverage artificial intelligence for new and lucrative income streams.</p>
+                            <button onclick="showPopup('aiPopup')" class="mt-auto bg-amber-500 text-blue-900 font-semibold py-2 px-4 rounded-lg text-center hover:bg-amber-400 transition-colors duration-300">Get the Guide</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- About Section -->
+        <section id="about" class="py-20 md:py-28 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="flex flex-col md:flex-row items-center gap-12">
+                    <div class="md:w-1/2">
+                        <img src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?q=80&w=2574&auto=format&fit=crop" alt="Team collaborating" class="rounded-xl shadow-2xl shadow-yellow-400/10">
+                    </div>
+                    <div class="md:w-1/2">
+                         <h2 class="text-3xl md:text-4xl font-bold text-stone-800 mb-4 section-title-underline">
+                            Why Ebuns Vault?
+                        </h2>
+                        <p class="text-stone-700 mb-6">
+                            We're not just another content platform. Ebuns Vault was founded by digital marketing veterans who believe in democratizing expert knowledge. Our mission is to provide clear, actionable, and affordable resources that deliver real-world results. We cut the fluff and give you the strategies that actually work.
+                        </p>
+                        <ul class="space-y-4">
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-amber-500 text-xl mt-1 mr-4"></i>
+                                <div>
+                                    <h4 class="font-semibold text-stone-800">Expert-Led Content</h4>
+                                    <p class="text-stone-600">Every guide is crafted by industry professionals with years of experience.</p>
+                                </div>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-rocket text-amber-500 text-xl mt-1 mr-4"></i>
+                                <div>
+                                    <h4 class="font-semibold text-stone-800">Actionable & Practical</h4>
+                                    <p class="text-stone-600">No theory, just practical steps you can implement immediately for tangible results.</p>
+                                </div>
+                            </li>
+                             <li class="flex items-start">
+                                <i class="fas fa-sync-alt text-amber-500 text-xl mt-1 mr-4"></i>
+                                <div>
+                                    <h4 class="font-semibold text-stone-800">Constantly Updated</h4>
+                                    <p class="text-stone-600">The digital world moves fast. Our content is regularly updated to stay ahead of the curve.</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+    </main>
+
+    <!-- Footer -->
+    <!-- Footer transferred with links from index.html -->
+    <footer id="contact" class="bg-white border-t border-gray-200 mt-12">
+        <div class="container mx-auto px-6 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- About -->
+                <div>
+                    <a href="#" class="text-2xl font-bold text-stone-800 tracking-wider mb-4 inline-block">
+                        EBUNS VAULT
+                    </a>
+                    <p class="text-stone-600 pr-8">
+                        Your command center for digital marketing mastery. We provide the tools and knowledge you need to succeed and thrive in the competitive online landscape.
+                    </ul>
+                </div>
+
+                <!-- Social -->
+                <div>
+                    <h4 class="font-bold text-stone-800 text-lg mb-4">Connect</h4>
+                    <p class="text-stone-600 mb-4">ebunsvault365@gmail.com</p>
+                    <div class="flex space-x-4">
+                        <a href="https://x.com/ebunsvault365" target="_blank" class="text-stone-600 hover:text-blue-400 text-2xl transition"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.instagram.com/ebunsvault365/" target="_blank" class="text-stone-600 hover:text-pink-400 text-2xl transition"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.facebook.com/profile.php?id=61580396167130" target="_blank" class="text-stone-600 hover:text-blue-600 text-2xl transition"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-stone-600 hover:text-blue-900 text-2xl transition"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-12 border-t border-gray-200 pt-6 text-center text-stone-500 text-sm">
+                <p>&copy; <span id="year"></span> Ebuns Vault. All Rights Reserved.</p>
+                <p class="mt-2">Developed and designed by <a href="https://github.com/aruosatech360-png" target="_blank" class="text-blue-600 hover:underline">Aruosa Tech</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Popups and interaction scripts merged from index.html -->
+    <!-- Popups -->
+    <!-- About Popup -->
+    <div id="aboutPopup" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+        <div class="bg-white rounded-2xl shadow-xl p-8 max-w-2xl w-full relative mx-4">
+            <button onclick="hidePopup('aboutPopup')" class="absolute top-4 right-5 text-stone-500 hover:text-blue-900 text-3xl font-bold">&times;</button>
+            <h2 class="text-3xl font-bold mb-6 text-blue-900">About Ebun’s Vault</h2>
+            <div class="text-stone-600 space-y-4 max-h-[70vh] overflow-y-auto pr-4 text-lg">
+                <p>Ebun’s Vault is more than just a digital store—it’s a space built to help everyday people unlock the tools, strategies, and confidence they need to succeed online. Inspired by our journey as digital entrepreneurs, this store was created to give students, 9–5 workers, and aspiring entrepreneurs practical, tested resources.</p>
+                <p>Inside Ebun’s Vault, you’ll find digital products designed for action—affiliate marketing guides, ChatGPT prompt packs, content creation kits, and step-by-step resources that make online business simple and achievable.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact Popup -->
+    <div id="contactPopup" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+        <div class="bg-white rounded-2xl shadow-xl p-8 max-w-md w-full relative mx-4">
+            <button onclick="hidePopup('contactPopup')" class="absolute top-4 right-5 text-stone-500 hover:text-blue-900 text-3xl font-bold">&times;</button>
+            <h2 class="text-3xl font-bold mb-6 text-blue-900">Contact Us</h2>
+            <p class="text-stone-600 text-lg">
+                Have questions or want to collaborate? Email us at <a href="mailto:ebunsvault365@gmail.com" class="text-amber-500 hover:underline">ebunsvault365@gmail.com</a> or DM us on WhatsApp <a href="https://wa.me/+2348039135420" target="_blank" class="text-amber-500 hover:underline">@Ebun's Vault</a>.
+            </p>
+        </div>
+    </div>
+
+    <!-- Product Popups (UGC, Affiliate, ChatGPT, Passion, School, Goal, AI) copied/adjusted from index.html -->
+    <div id="ugcPopup" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+        <div class="bg-white rounded-2xl shadow-xl p-8 max-w-2xl w-full relative mx-4">
+            <button onclick="hidePopup('ugcPopup')" class="absolute top-4 right-5 text-stone-500 hover:text-blue-900 text-3xl font-bold">&times;</button>
+            <h2 class="text-3xl font-bold mb-6 text-blue-900">The UGC Handbook</h2>
+            <div class="text-stone-600 space-y-4 max-h-[70vh] overflow-y-auto pr-4 text-lg">
+                <p>This is the ultimate step-by-step guide to building a successful User-Generated Content business. Learn how to create authentic content that brands love, pitch to them with confidence, and turn your creativity into a reliable income stream—no prior experience or large following required!</p>
+                <p>Inside, you'll find curated lists of brands that work with new creators, copy-paste pitch templates, and insider tips to get noticed.</p>
+            </div>
+            <a href="UGC Hand Book.html" class="mt-6 inline-block bg-amber-500 text-blue-900 font-bold px-8 py-3 rounded-full text-lg hover:bg-stone-200 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105">Get The Handbook</a>
+        </div>
+    </div>
+
+    <div id="affiliatePopup" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+        <div class="bg-white rounded-2xl shadow-xl p-8 max-w-2xl w-full relative mx-4">
+            <button onclick="hidePopup('affiliatePopup')" class="absolute top-4 right-5 text-stone-500 hover:text-blue-900 text-3xl font-bold">&times;</button>
+            <h2 class="text-3xl font-bold mb-6 text-blue-900">The Truth About Affiliate Marketing</h2>
+            <div class="text-stone-600 space-y-4 max-h-[70vh] overflow-y-auto pr-4 text-lg">
+                <p>Tired of the hype? This guide cuts through the noise and reveals what it really takes to succeed with affiliate marketing. Learn how to choose profitable niches, find high-converting products, build an audience that trusts you, and create content that drives sales without being pushy.</p>
+            </div>
+            <a href="https://selar.com/313b7p" class="mt-6 inline-block bg-amber-500 text-blue-900 font-bold px-8 py-3 rounded-full text-lg hover:bg-stone-200 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105">Get The Guide</a>
+        </div>
+    </div>
+
+    <div id="chatgptPopup" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+        <div class="bg-white rounded-2xl shadow-xl p-8 max-w-2xl w-full relative mx-4">
+            <button onclick="hidePopup('chatgptPopup')" class="absolute top-4 right-5 text-stone-500 hover:text-blue-900 text-3xl font-bold">&times;</button>
+            <h2 class="text-3xl font-bold mb-6 text-blue-900">ChatGPT Prompts for Digital Marketing</h2>
+            <div class="text-stone-600 space-y-4 max-h-[70vh] overflow-y-auto pr-4 text-lg">
+                <p>This prompt pack is your secret weapon for creating high-quality marketing materials in minutes. Inside, you'll find hundreds of expertly crafted, copy-paste prompts for social media content, email campaigns, ad copy, blog posts, and more.</p>
+            </div>
+            <a href="https://selar.com/b7h755" class="mt-6 inline-block bg-amber-500 text-blue-900 font-bold px-8 py-3 rounded-full text-lg hover:bg-stone-200 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105">Get The Prompts</a>
+        </div>
+    </div>
+
+    <div id="passionPopup" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+        <div class="bg-white rounded-2xl shadow-xl p-8 max-w-2xl w-full relative mx-4">
+            <button onclick="hidePopup('passionPopup')" class="absolute top-4 right-5 text-stone-500 hover:text-blue-900 text-3xl font-bold">&times;</button>
+            <h2 class="text-3xl font-bold mb-6 text-blue-900">Turn Your Passion to Income Blueprint</h2>
+            <div class="text-stone-600 space-y-4 max-h-[70vh] overflow-y-auto pr-4 text-lg">
+                <p>Do you have a hobby or skill you love? This blueprint shows you exactly how to turn it into a profitable online business. From identifying your niche and creating a digital product to marketing and selling it online, this guide covers every step.</p>
+            </div>
+            <a href="https://selar.com/4j6437" class="mt-6 inline-block bg-amber-500 text-blue-900 font-bold px-8 py-3 rounded-full text-lg hover:bg-stone-200 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105">Get The Blueprint</a>
+        </div>
+    </div>
+
+    <div id="schoolPopup" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+        <div class="bg-white rounded-2xl shadow-xl p-8 max-w-2xl w-full relative mx-4">
+            <button onclick="hidePopup('schoolPopup')" class="absolute top-4 right-5 text-stone-500 hover:text-blue-900 text-3xl font-bold">&times;</button>
+            <h2 class="text-3xl font-bold mb-6 text-blue-900">Survive & Shine in Secondary School</h2>
+            <div class="text-stone-600 space-y-4 max-h-[70vh] overflow-y-auto pr-4 text-lg">
+                <p>The ultimate WAEC + JAMB edition! This guide is packed with proven study strategies, time management techniques, and ready-to-use notes for key subjects.</p>
+            </div>
+            <a href="https://selar.com/160r10/" class="mt-6 inline-block bg-amber-500 text-blue-900 font-bold px-8 py-3 rounded-full text-lg hover:bg-stone-200 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105">Get The Guide</a>
+        </div>
+    </div>
+
+    <div id="goalPopup" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+        <div class="bg-white rounded-2xl shadow-xl p-8 max-w-2xl w-full relative mx-4">
+            <button onclick="hidePopup('goalPopup')" class="absolute top-4 right-5 text-stone-500 hover:text-blue-900 text-3xl font-bold">&times;</button>
+            <h2 class="text-3xl font-bold mb-6 text-blue-900">Goal-Setting Template</h2>
+            <div class="text-stone-600 space-y-4 max-h-[70vh] overflow-y-auto pr-4 text-lg">
+                <p>Ambition is powerful—but uncontrolled ambition is a trap. Write your ambitions, goals, and action steps. Without writing, you will fail. Use this template to structure your ambition.</p>
+            </div>
+            <div class="mt-6 flex flex-wrap gap-4">
+                <a href="https://drive.google.com/file/d/1CUIFeJ0dlh7LHgBKRdgL9Q-D5i-PSrAS/view?usp=drivesdk" target="_blank" class="inline-block bg-amber-500 text-blue-900 font-bold px-8 py-3 rounded-full text-lg hover:bg-amber-600 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105">Get The Template</a>
+            </div>
+        </div>
+    </div>
+
+    <div id="aiPopup" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+        <div class="bg-white rounded-2xl shadow-xl p-8 max-w-2xl w-full relative mx-4">
+            <button onclick="hidePopup('aiPopup')" class="absolute top-4 right-5 text-stone-500 hover:text-blue-900 text-3xl font-bold">&times;</button>
+            <h2 class="text-3xl font-bold mb-6 text-blue-900">AI Monetization</h2>
+            <div class="text-stone-600 space-y-4 max-h-[70vh] overflow-y-auto pr-4 text-lg">
+                <p>AI is a tool. Tools don't make money—people who know how to use them do. Learn concrete skills to monetize AI and get templates to build your first AI-powered offer.</p>
+            </div>
+            <div class="mt-6 flex flex-wrap gap-4">
+                <a href="Blog Post 11.html" class="inline-block bg-amber-500 text-blue-900 font-bold px-8 py-3 rounded-full text-lg hover:bg-stone-200 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105">Read Full Guide</a>
+                <a href="https://drive.google.com/file/d/1PUtHdOed1t-he73lz4XWgibGScZK4HQg/view?usp=drivesdk" target="_blank" class="inline-block bg-stone-200 text-blue-900 font-bold px-8 py-3 rounded-full text-lg hover:bg-stone-300 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105">Get Editable Template</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Basic popup helpers
+        function showPopup(id) {
+            const el = document.getElementById(id);
+            if (el) el.classList.remove('hidden');
+        }
+        function hidePopup(id) {
+            const el = document.getElementById(id);
+            if (el) el.classList.add('hidden');
+        }
+
+        // Mobile menu toggle (shared with header)
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        function toggleMobileMenu() {
+            if (mobileMenu) {
+                mobileMenu.classList.toggle('hidden');
+            }
+        }
+        if (mobileMenuButton) mobileMenuButton.addEventListener('click', toggleMobileMenu);
+
+        // Set current year in footer
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (!href || href === '#') return;
+                e.preventDefault();
+                const targetElement = document.querySelector(href);
+                if(targetElement) {
+                    targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+                // Close mobile menu on link click
+                if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
+                    mobileMenu.classList.add('hidden');
+                }
+            });
+        });
+
+        // Show popup from URL hash (index.html behavior)
+        window.addEventListener('DOMContentLoaded', (event) => {
+            if(window.location.hash === '#showGoalPopup') {
+                showPopup('goalPopup');
+            }
+        });
+
+        // Optional: close popups when clicking backdrop
+        document.querySelectorAll('[id$="Popup"]').forEach(p => {
+            p.addEventListener('click', (e) => {
+                if (e.target === p) p.classList.add('hidden');
+            });
+        });
+    </script>
+
+</body>
+</html>

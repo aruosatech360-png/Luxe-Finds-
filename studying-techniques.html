@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Studying Techniques — Luxe Find Blog</title>
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+  <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+  <style>
+    :root{--gold: #fde403;} .gold { color: var(--gold); } .bg-gold { background-color: var(--gold); } .card { border: 1px solid rgba(1, 88, 250, 0.815); }
+    /* Cart slide-out styles */
+    #cart-panel-container.hidden { pointer-events: none; }
+    #cart-panel-container .backdrop { opacity: 0; transition: opacity 0.3s ease-in-out; }
+    #cart-panel { transform: translateX(100%); transition: transform 0.3s ease-in-out; }
+    /* Mobile Menu Transitions */
+    #mobile-menu-container.hidden { pointer-events: none; }
+    #mobile-menu-container .backdrop { opacity: 0; transition: opacity 0.3s ease-in-out; }
+    #mobile-menu-panel { transform: translateX(-100%); transition: transform 0.3s ease-in-out; }
+  </style>
+</head>
+<body class="min-h-screen bg-white text-slate-900 antialiased">
+  <header class="bg-white shadow-sm sticky top-0 z-50">
+    <div class="max-w-6xl mx-auto flex items-center justify-between p-4">
+      <a href="Luxe Find 3.html#home" class="flex items-center gap-2">
+        <img src="Gemini_Generated_Image_cuo4zgcuo4zgcuo4.png" alt="Luxe Find Logo" class="h-8">
+      </a>
+      <nav class="hidden md:flex space-x-6 text-sm font-medium items-center">
+        <a href="Luxe Find 3.html#home" class="hover:gold transition-colors">Home</a>
+        <a href="shop.html" class="hover:gold transition-colors">Shop</a>
+        <a href="blog.html" class="hover:gold gold transition-colors">Blog</a>
+        <a href="#" id="header-contact-btn" class="hover:gold cursor-pointer transition-colors">Contact</a>
+      </nav>
+      <div class="flex items-center gap-4">
+        <button id="view-cart" class="px-4 py-2 rounded-2xl card hover:shadow transition-shadow">View Cart (<span id="cart-count">0</span>)</button>
+        <button id="mobile-menu-btn" class="md:hidden text-2xl">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" /></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="max-w-3xl mx-auto p-6">
+    <article class="prose lg:prose-xl">
+        <h1 class="text-3xl md:text-4xl font-extrabold tracking-tight gold">Master Your Studies: Effective Techniques for Success</h1>
+        <p class="text-gray-500 text-sm">Published on <time>October 26, 2023</time></p>
+        
+        <img src="https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?q=80&w=2670&auto=format=fit=crop" alt="Studying" class="w-full rounded-lg my-8">
+
+        <p class="lead text-gray-700">Feeling overwhelmed by exams and assignments? The key isn't to study more, but to study smarter. By incorporating effective techniques into your routine, you can improve retention, reduce stress, and achieve the grades you're aiming for. Let's dive into some proven methods.</p>
+
+        <h2 class="font-bold text-2xl mt-8 mb-4">1. The Pomodoro Technique</h2>
+        <p>This time management method involves breaking your study sessions into focused 25-minute intervals, separated by short breaks. This helps maintain concentration and prevents burnout. A simple timer is all you need to get started.</p>
+
+        <h2 class="font-bold text-2xl mt-8 mb-4">2. Active Recall</h2>
+        <p>Instead of passively re-reading your notes, actively test yourself. Close the book and try to recall key concepts from memory. This strengthens neural pathways and makes information easier to remember during an exam.</p>
+
+        <h2 class="font-bold text-2xl mt-8 mb-4">3. Spaced Repetition</h2>
+        <p>Reviewing information at increasing intervals over time is far more effective than cramming. Use flashcards or apps to schedule reviews, ensuring that concepts are moved from your short-term to your long-term memory.</p>
+
+        <div class="mt-12 p-6 bg-yellow-50 rounded-lg text-center">
+            <h3 class="font-bold text-xl mb-2">Want More Expert-Crafted Guides?</h3>
+            <p class="text-gray-600 mb-4">Elevate your skills beyond the classroom. Ebuns Vault offers digital guides on marketing, income generation, and more.</p>
+            <a href="https://aruosatech360-png.github.io/Ebuns-Vault/" target="_blank" class="inline-block bg-gold text-white font-bold py-3 px-6 rounded-full text-lg hover:opacity-90 transition">Explore Ebuns Vault</a>
+        </div>
+    </article>
+  </main>
+
+  <!-- Floating Cart Button -->
+  <button id="floating-cart-btn" class="fixed bottom-6 right-6 bg-gold text-white w-16 h-16 rounded-full flex items-center justify-center shadow-lg z-40">
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" /></svg>
+    <span id="floating-cart-count" class="absolute -top-1 -right-1 bg-red-500 text-white text-xs font-bold w-6 h-6 rounded-full flex items-center justify-center border-2 border-white">0</span>
+  </button>
+
+  <!-- Contact Popup -->
+  <div id="contact-popup" class="fixed inset-0 bg-black/50 z-50 hidden items-center justify-center">
+    <div class="bg-white p-8 rounded-xl shadow-lg text-center max-w-sm mx-4">
+      <h3 class="text-2xl font-bold gold mb-4">Get in Touch</h3>
+      <p class="text-gray-600 mb-2">For inquiries and Collaborations, please contact us via:</p>
+      <p class="font-semibold text-lg">+234 803 913 5420</p>
+      <p class="font-semibold text-lg mb-6">+234 913 901 5507</p>
+      <button id="close-contact-popup" class="px-6 py-2 bg-gray-200 rounded-lg hover:bg-gray-300">Close</button>
+    </div>
+  </div>
+
+  <!-- Cart Slide-out Panel -->
+  <div id="cart-panel-container" class="fixed inset-0 z-50 hidden">
+    <div id="cart-backdrop" class="backdrop absolute inset-0 bg-black/50"></div>
+    <div id="cart-panel" class="absolute top-0 right-0 h-full w-full max-w-md bg-white shadow-2xl flex flex-col">
+      <div class="p-4 border-b flex justify-between items-center">
+        <h2 class="font-bold gold text-xl">Your Cart</h2>
+        <button id="close-cart-panel" class="text-2xl text-gray-500 hover:text-gray-800">&times;</button>
+      </div>
+      <div id="cart-items" class="p-4 flex-1 overflow-y-auto">
+        <p class="text-gray-500 text-center">Your cart is empty.</p>
+      </div>
+      <div class="p-4 border-t bg-gray-50 space-y-3">
+        <div class="flex justify-between items-center"><span class="text-sm text-gray-500">Subtotal</span><span id="subtotal" class="text-xl font-bold">₦0</span></div>
+        <a href="shop.html?openCart=true" id="checkout-link" class="w-full text-center px-4 py-3 rounded-xl bg-gold text-white font-semibold block">Add items & Checkout</a>
+        <button id="clear-cart" class="w-full text-sm text-red-500 hover:underline">Clear Cart</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile Menu Panel -->
+  <div id="mobile-menu-container" class="fixed inset-0 z-50 hidden">
+    <div class="backdrop absolute inset-0 bg-black/50"></div>
+    <div id="mobile-menu-panel" class="absolute top-0 left-0 h-full w-4/5 max-w-xs bg-white shadow-2xl p-6">
+      <button id="close-mobile-menu" class="absolute top-4 right-4 text-2xl text-gray-500">&times;</button>
+      <a href="Luxe Find 3.html#home" class="flex items-center gap-2 mb-8">
+        <img src="Gemini_Generated_Image_cuo4zgcuo4zgcuo4.png" alt="Luxe Find Logo" class="h-8">
+      </a>
+      <nav class="flex flex-col space-y-4 text-lg">
+        <a href="Luxe Find 3.html#home" class="hover:gold mobile-nav-link">Home</a>
+        <a href="shop.html" class="hover:gold mobile-nav-link">Shop</a>
+        <a href="blog.html" class="hover:gold mobile-nav-link">Blog</a> 
+      </nav>
+    </div>
+  </div>
+
+  <footer class="bg-yellow-50 border-t mt-12">
+    <div class="max-w-6xl mx-auto text-center py-8 px-4">
+      <a href="Luxe Find 3.html#home" class="flex items-center justify-center gap-2 mb-4"><img src="Gemini_Generated_Image_cuo4zgcuo4zgcuo4.png" alt="Luxe Find Logo" class="h-8"></a>
+      <p class="text-sm text-gray-600 mb-2">© 2025 Luxe Find. Affordable Luxury & Elegance.</p>
+      <p class="text-xs text-gray-500">Developed and designed by <a href="https://github.com/aruosatech360-png" target="_blank" class="text-blue-600 hover:underline">Aruosa Tech</a></p>
+    </div>
+  </footer>
+  <script src="app.js" defer></script>
+  <script>
+    // Mobile Menu Logic
+    document.addEventListener('DOMContentLoaded', () => {
+      const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+      const mobileMenuContainer = document.getElementById('mobile-menu-container');
+      const mobileMenuPanel = document.getElementById('mobile-menu-panel');
+      const closeMobileMenuBtn = document.getElementById('close-mobile-menu');
+      const mobileMenuBackdrop = mobileMenuContainer.querySelector('.backdrop');
+
+      const openMobileMenu = () => {
+          mobileMenuContainer.classList.remove('hidden');
+          setTimeout(() => {
+              mobileMenuContainer.querySelector('.backdrop').style.opacity = '1';
+              mobileMenuPanel.style.transform = 'translateX(0)';
+          }, 10);
+      };
+
+      const closeMobileMenu = () => {
+          mobileMenuContainer.querySelector('.backdrop').style.opacity = '0';
+          mobileMenuPanel.style.transform = 'translateX(-100%)';
+          setTimeout(() => mobileMenuContainer.classList.add('hidden'), 300);
+      };
+
+      mobileMenuBtn.addEventListener('click', openMobileMenu);
+      closeMobileMenuBtn.addEventListener('click', closeMobileMenu);
+      mobileMenuBackdrop.addEventListener('click', closeMobileMenu);
+    });
+  </script>
+</body>
+</html>

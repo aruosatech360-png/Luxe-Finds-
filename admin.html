@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Admin Panel — Luxe Find</title>
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root{
+      --gold: #fde403;
+    }
+    .gold { color: var(--gold); }
+    .bg-gold { background-color: var(--gold); }
+    .card { border: 1px solid rgba(1, 88, 250, 0.815); }
+  </style>
+</head>
+<body class="min-h-screen bg-white text-slate-900 antialiased">
+  <header class="bg-white shadow-sm sticky top-0 z-50">
+    <div class="max-w-6xl mx-auto flex items-center justify-between p-4">
+      <a href="Luxe Find 3.html#home" class="flex items-center gap-2">
+        <img src="Gemini_Generated_Image_cuo4zgcuo4zgcuo4.png" alt="Luxe Find Logo" class="h-8">
+      </a>
+      <h1 class="text-2xl font-bold gold">Admin Panel</h1>
+      <a href="Luxe Find 3.html" class="px-4 py-2 rounded-2xl card hover:shadow">Back to Shop</a>
+    </div>
+  </header>
+
+  <main class="max-w-4xl mx-auto p-6 py-12">
+    <h2 class="text-3xl font-bold text-center mb-8">Manage Product Stock</h2>
+    <div id="product-list" class="space-y-4">
+      <!-- Products will be rendered here -->
+    </div>
+  </main>
+
+  <footer class="bg-yellow-50 border-t mt-12">
+    <div class="max-w-6xl mx-auto text-center py-8 px-4">
+      <a href="Luxe Find 3.html#home" class="flex items-center justify-center gap-2 mb-4">
+        <img src="Gemini_Generated_Image_cuo4zgcuo4zgcuo4.png" alt="Luxe Find Logo" class="h-8">
+      </a>
+      <p class="text-sm text-gray-600 mb-2">© 2025 Luxe Find. Affordable Luxury & Elegance.</p>
+      <p class="text-xs text-gray-500">Developed and designed by <a href="https://github.com/aruosatech360-png" target="_blank" class="text-blue-600 hover:underline">Aruosa Tech</a></p>
+    </div>
+  </footer>
+
+  <script src="app.js" defer></script>
+  <script>
+    function renderProductList(products, stockStatus) {
+      const productListEl = document.getElementById('product-list');
+      if (!productListEl) return;
+
+      function saveProductStockStatus() {
+        localStorage.setItem('luxeFindProductStock', JSON.stringify(stockStatus));
+      }
+
+      function render() {
+      productListEl.innerHTML = '';
+        products.forEach(p => {
+          const isInStock = stockStatus[p.id];
+          const itemEl = document.createElement('div');
+          itemEl.className = 'flex items-center justify-between p-4 bg-white rounded-lg shadow-sm border border-gray-200';
+          itemEl.innerHTML = `
+            <div class="flex-1">
+              <p class="font-semibold text-lg">${p.name}</p>
+              <p class="text-sm text-gray-600">${p.desc}</p>
+            </div>
+            <div class="flex items-center gap-4">
+              <span class="font-bold ${isInStock ? 'text-green-600' : 'text-red-600'}">
+                ${isInStock ? 'In Stock' : 'Out of Stock'}
+              </span>
+              <button
+                class="toggle-stock-btn px-4 py-2 rounded-lg text-white font-semibold transition-colors
+                       ${isInStock ? 'bg-red-500 hover:bg-red-600' : 'bg-green-500 hover:bg-green-600'}"
+                data-product-id="${p.id}"
+              >
+                ${isInStock ? 'Mark Out of Stock' : 'Mark In Stock'}
+              </button>
+            </div>
+          `;
+          productListEl.appendChild(itemEl);
+        });
+      }
+      
+      productListEl.addEventListener('click', (e) => {
+        const button = e.target.closest('.toggle-stock-btn');
+        if (button) {
+          const productId = button.dataset.productId;
+          if (productId) {
+            stockStatus[productId] = !stockStatus[productId]; // Toggle status
+            saveProductStockStatus();
+            render(); // Re-render the list to reflect changes
+          }
+        }
+      });
+      
+      render();
+    }
+  </script>
+</body>
+</html>

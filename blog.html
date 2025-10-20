@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Blog — Luxe Find</title>
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root{
+      --gold: #fde403;
+    }
+    .gold { color: var(--gold); }
+    .bg-gold { background-color: var(--gold); }
+    .card { border: 1px solid rgba(1, 88, 250, 0.815); }
+    .blog-card {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .blog-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+    }
+    /* Mobile Menu Transitions */
+    #mobile-menu-container.hidden {
+      pointer-events: none;
+    }
+    #mobile-menu-container .backdrop {
+      opacity: 0;
+      transition: opacity 0.3s ease-in-out;
+    }
+    #mobile-menu-panel {
+      transform: translateX(-100%);
+      transition: transform 0.3s ease-in-out;
+    }
+  </style>
+</head>
+<body class="min-h-screen bg-yellow-50 text-slate-900 antialiased">
+  <header class="bg-white shadow-sm sticky top-0 z-50">
+    <div class="max-w-6xl mx-auto flex items-center justify-between p-4">
+      <a href="Luxe Find 3.html#home" class="flex items-center gap-2">
+        <img src="Gemini_Generated_Image_cuo4zgcuo4zgcuo4.png" alt="Luxe Find Logo" class="h-8">
+      </a>
+      <nav class="hidden md:flex space-x-6 text-sm font-medium items-center">
+        <a href="Luxe Find 3.html#home" class="hover:gold transition-colors">Home</a>
+        <a href="shop.html" class="hover:gold transition-colors">Shop</a>
+        <a href="blog.html" class="hover:gold gold transition-colors">Blog</a>
+        <a href="#" id="header-contact-btn" class="hover:gold cursor-pointer transition-colors">Contact</a>
+      </nav>
+      <div class="flex items-center gap-4">
+        <button id="view-cart" class="px-4 py-2 rounded-2xl card hover:shadow transition-shadow">View Cart (<span id="cart-count">0</span>)</button>
+        <button id="mobile-menu-btn" class="md:hidden text-2xl">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" /></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="max-w-6xl mx-auto p-6">
+    <div class="text-center py-12">
+        <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight">From Our <span class="gold">Blog</span></h1>
+        <p class="mt-4 text-lg text-gray-600">Insights, tips, and stories about minimalist luxury and student life.</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <!-- Blog Post 1 -->
+      <div class="blog-card bg-white rounded-xl overflow-hidden shadow-sm">
+        <img src="https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?q=80&w=2670&auto=format&fit=crop" alt="Studying" class="w-full h-48 object-cover">
+        <div class="p-6">
+          <h3 class="font-bold text-xl mb-2">Master Your Studies: Effective Techniques for Success</h3>
+          <p class="text-gray-600 text-sm mb-4">Unlock your academic potential with proven study methods that help you learn smarter, not harder. Perfect for exam season!</p>
+          <a href="studying-techniques.html" class="font-semibold text-blue-600 hover:underline">Read More &rarr;</a>
+        </div>
+      </div>
+
+      <!-- Blog Post 2 -->
+      <div class="blog-card bg-white rounded-xl overflow-hidden shadow-sm">
+        <img src="Image 41.jpg" alt="Snacking and reading" class="w-full h-48 object-cover">
+        <div class="p-6">
+          <h3 class="font-bold text-xl mb-2">The Perfect Pair: Why Snacking and Reading Go Hand-in-Hand</h3>
+          <p class="text-gray-600 text-sm mb-4">Discover how the right snacks can boost your focus and make your reading sessions more enjoyable and productive.</p>
+          <a href="snacking-and-reading.html" class="font-semibold text-blue-600 hover:underline">Read More &rarr;</a>
+        </div>
+      </div>
+
+      <!-- Blog Post 3 -->
+      <div class="blog-card bg-white rounded-xl overflow-hidden shadow-sm">
+        <img src="https://images.unsplash.com/photo-1556742111-a301076d9d18?q=80&w=2670&auto=format&fit=crop" alt="Student influencer" class="w-full h-48 object-cover">
+        <div class="p-6">
+          <h3 class="font-bold text-xl mb-2">From Campus to Camera: A Student's Guide to Becoming an Influencer</h3>
+          <p class="text-gray-600 text-sm mb-4">Balance your studies and social media stardom with these essential tips for aspiring student influencers.</p>
+          <a href="student-influencer-tips.html" class="font-semibold text-blue-600 hover:underline">Read More &rarr;</a>
+        </div>
+      </div>
+
+      <!-- Blog Post 4 -->
+      <div class="blog-card bg-white rounded-xl overflow-hidden shadow-sm">
+        <img src="Freshers.jpg" alt="University campus" class="w-full h-48 object-cover">
+        <div class="p-6">
+          <h3 class="font-bold text-xl mb-2">The Fresher's Compass: Your Startup Guide to University Life</h3>
+          <p class="text-gray-600 text-sm mb-4">Navigate your first year with ease. From making friends to managing your schedule, this guide has you covered.</p>
+          <a href="freshers-startup-guide.html" class="font-semibold text-blue-600 hover:underline">Read More &rarr;</a>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+   <!-- Contact Popup -->
+  <div id="contact-popup" class="fixed inset-0 bg-black/50 z-50 hidden items-center justify-center">
+    <div class="bg-white p-8 rounded-xl shadow-lg text-center max-w-sm mx-4">
+      <h3 class="text-2xl font-bold gold mb-4">Get in Touch</h3>
+      <p class="text-gray-600 mb-2">For inquiries and Collaborations, please contact us via:</p>
+      <p class="font-semibold text-lg">+234 803 913 5420</p>
+      <p class="font-semibold text-lg mb-6">+234 913 901 5507</p>
+      <button id="close-contact-popup" class="px-6 py-2 bg-gray-200 rounded-lg hover:bg-gray-300">Close</button>
+    </div>
+  </div>
+
+  <!-- Mobile Menu Panel -->
+  <div id="mobile-menu-container" class="fixed inset-0 z-50 hidden">
+    <div class="backdrop absolute inset-0 bg-black/50"></div>
+    <div id="mobile-menu-panel" class="absolute top-0 left-0 h-full w-4/5 max-w-xs bg-white shadow-2xl p-6">
+      <button id="close-mobile-menu" class="absolute top-4 right-4 text-2xl text-gray-500">&times;</button>
+      <a href="Luxe Find 3.html#home" class="flex items-center gap-2 mb-8">
+        <img src="Gemini_Generated_Image_cuo4zgcuo4zgcuo4.png" alt="Luxe Find Logo" class="h-8">
+      </a>
+      <nav class="flex flex-col space-y-4 text-lg">
+        <a href="Luxe Find 3.html#home" class="hover:gold mobile-nav-link">Home</a>
+        <a href="shop.html" class="hover:gold mobile-nav-link">Shop</a>
+        <a href="blog.html" class="hover:gold mobile-nav-link">Blog</a> 
+      </nav>
+    </div>
+  </div>
+
+  <footer class="bg-white border-t mt-12">
+    <div class="max-w-6xl mx-auto text-center py-8 px-4">
+      <a href="Luxe Find 3.html#home" class="flex items-center justify-center gap-2 mb-4"><img src="Gemini_Generated_Image_cuo4zgcuo4zgcuo4.png" alt="Luxe Find Logo" class="h-8"></a>
+      <p class="text-sm text-gray-600 mb-2">© 2025 Luxe Find. Affordable Luxury & Elegance.</p>
+      <p class="text-xs text-gray-500">Developed and designed by <a href="https://github.com/aruosatech360-png" target="_blank" class="text-blue-600 hover:underline">Aruosa Tech</a></p>
+    </div>
+  </footer>
+  
+  <script src="app.js" defer></script>
+  <script>
+    // Mobile Menu Logic
+    document.addEventListener('DOMContentLoaded', () => {
+      const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+      const mobileMenuContainer = document.getElementById('mobile-menu-container');
+      const mobileMenuPanel = document.getElementById('mobile-menu-panel');
+      const closeMobileMenuBtn = document.getElementById('close-mobile-menu');
+      const mobileMenuBackdrop = mobileMenuContainer.querySelector('.backdrop');
+      const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+
+      const openMobileMenu = () => {
+          mobileMenuContainer.classList.remove('hidden');
+          setTimeout(() => {
+              mobileMenuBackdrop.style.opacity = '1';
+              mobileMenuPanel.style.transform = 'translateX(0)';
+          }, 10);
+      };
+
+      const closeMobileMenu = () => {
+          mobileMenuBackdrop.style.opacity = '0';
+          mobileMenuPanel.style.transform = 'translateX(-100%)';
+          setTimeout(() => {
+              mobileMenuContainer.classList.add('hidden');
+          }, 300);
+      };
+
+      mobileMenuBtn.addEventListener('click', openMobileMenu);
+      closeMobileMenuBtn.addEventListener('click', closeMobileMenu);
+      mobileMenuBackdrop.addEventListener('click', closeMobileMenu);
+      mobileNavLinks.forEach(link => link.addEventListener('click', closeMobileMenu));
+    });
+  </script>
+</body>
+</html>

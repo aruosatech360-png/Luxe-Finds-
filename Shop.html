@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Shop — Luxe Find</title>
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root{
+      --gold: #fde403;
+    }
+    .gold { color: var(--gold); }
+    .bg-gold { background-color: var(--gold); }
+    .card { border: 1px solid rgba(1, 88, 250, 0.815); }
+    /* Cart slide-out styles */
+    #cart-panel-container.hidden {
+      pointer-events: none;
+    }
+    #cart-panel-container .backdrop {
+      opacity: 0;
+      transition: opacity 0.3s ease-in-out;
+    }
+    #cart-panel {
+      transform: translateX(100%);
+      transition: transform 0.3s ease-in-out;
+    }
+    /* Mobile Menu Transitions */
+    #mobile-menu-container.hidden {
+      pointer-events: none;
+    }
+    #mobile-menu-container .backdrop {
+      opacity: 0;
+      transition: opacity 0.3s ease-in-out;
+    }
+    #mobile-menu-panel {
+      transform: translateX(-100%);
+      transition: transform 0.3s ease-in-out;
+    }
+  </style>
+</head>
+<body class="min-h-screen bg-white text-slate-900 antialiased">
+  <header class="bg-white shadow-sm sticky top-0 z-50">
+    <div class="max-w-6xl mx-auto flex items-center justify-between p-4">
+      <a href="Luxe Find 3.html#home" class="flex items-center gap-2">
+        <img src="Gemini_Generated_Image_cuo4zgcuo4zgcuo4.png" alt="Luxe Find Logo" class="h-8">
+      </a>
+      <nav class="hidden md:flex space-x-6 text-sm font-medium items-center">
+        <a href="Luxe Find 3.html#home" class="hover:gold transition-colors">Home</a>
+        <a href="shop.html" class="hover:gold gold transition-colors">Shop</a>
+        <a href="blog.html" class="hover:gold transition-colors">Blog</a> 
+        <a href="#" id="header-contact-btn" class="hover:gold cursor-pointer transition-colors">Contact</a>
+      </nav>
+      <div class="flex items-center gap-4">
+        <button id="view-cart" class="px-4 py-2 rounded-2xl card hover:shadow transition-shadow">View Cart (<span id="cart-count">0</span>)</button>
+        <button id="mobile-menu-btn" class="md:hidden text-2xl">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" /></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="max-w-6xl mx-auto p-6">
+    <h2 class="text-2xl font-bold mb-4 gold">New Arrivals</h2>
+    <div id="products" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"></div>
+  </main>
+
+  <!-- Floating Cart Button -->
+  <button id="floating-cart-btn" class="fixed bottom-6 right-6 bg-gold text-white w-16 h-16 rounded-full flex items-center justify-center shadow-lg z-40">
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" /></svg>
+    <span id="floating-cart-count" class="absolute -top-1 -right-1 bg-red-500 text-white text-xs font-bold w-6 h-6 rounded-full flex items-center justify-center border-2 border-white">0</span>
+  </button>
+
+  <!-- Contact Popup -->
+  <div id="contact-popup" class="fixed inset-0 bg-black/50 z-50 hidden items-center justify-center">
+    <div class="bg-white p-8 rounded-xl shadow-lg text-center max-w-sm mx-4">
+      <h3 class="text-2xl font-bold gold mb-4">Get in Touch</h3>
+      <p class="text-gray-600 mb-2">For inquiries and Collaborations, please contact us via:</p>
+      <p class="font-semibold text-lg">+234 803 913 5420</p>
+      <p class="font-semibold text-lg mb-6">+234 913 901 5507</p>
+      <button id="close-contact-popup" class="px-6 py-2 bg-gray-200 rounded-lg hover:bg-gray-300">Close</button>
+    </div>
+  </div>
+
+  <!-- Cart Slide-out Panel -->
+  <div id="cart-panel-container" class="fixed inset-0 z-50 hidden">
+    <!-- Backdrop -->
+    <div id="cart-backdrop" class="backdrop absolute inset-0 bg-black/50"></div>
+    <!-- Panel -->
+    <div id="cart-panel" class="absolute top-0 right-0 h-full w-full max-w-md bg-white shadow-2xl flex flex-col">
+      <div class="p-4 border-b flex justify-between items-center">
+        <h2 class="font-bold gold text-xl">Your Cart</h2>
+        <button id="close-cart-panel" class="text-2xl text-gray-500 hover:text-gray-800">&times;</button>
+      </div>
+      <div class="p-4 flex-1 overflow-y-auto">
+        <form id="checkout-form" class="space-y-4">
+          <div>
+            <label class="text-sm font-medium">Your name</label>
+            <input id="customer-name" required class="w-full p-2 rounded border mt-1" placeholder="e.g. David" />
+          </div>
+          <div>
+            <label class="text-sm font-medium">Your phone</label>
+            <input id="customer-phone" type="tel" required class="w-full p-2 rounded border mt-1" placeholder="e.g. 08012345678" maxlength="11" />
+          </div>
+          <div>
+            <label class="text-sm font-medium">Hostel address</label>
+            <textarea id="customer-address" class="w-full p-2 rounded border mt-1" placeholder="Hostel name, room number..."></textarea>
+          </div>
+        </form>
+        <small class="block mt-4 text-xs text-gray-500">After you send the order, payment & confirmation continue in WhatsApp.</small>
+      </div>
+      <div class="p-4 border-t bg-gray-50 space-y-3">
+        <div class="flex justify-between items-center"><span class="text-sm text-gray-500">Subtotal</span><span id="subtotal" class="text-xl font-bold">₦0</span></div>
+        <button type="submit" form="checkout-form" id="send-wp" class="w-full px-4 py-3 rounded-xl bg-gold text-white font-semibold">Send order to WhatsApp</button>
+        <button id="clear-cart" class="w-full text-sm text-red-500 hover:underline">Clear Cart</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile Menu Panel -->
+  <div id="mobile-menu-container" class="fixed inset-0 z-50 hidden">
+    <div class="backdrop absolute inset-0 bg-black/50"></div>
+    <div id="mobile-menu-panel" class="absolute top-0 left-0 h-full w-4/5 max-w-xs bg-white shadow-2xl p-6">
+      <button id="close-mobile-menu" class="absolute top-4 right-4 text-2xl text-gray-500">&times;</button>
+      <a href="Luxe Find 3.html#home" class="flex items-center gap-2 mb-8">
+        <img src="Gemini_Generated_Image_cuo4zgcuo4zgcuo4.png" alt="Luxe Find Logo" class="h-8">
+      </a>
+      <nav class="flex flex-col space-y-4 text-lg">
+        <a href="Luxe Find 3.html#home" class="hover:gold mobile-nav-link">Home</a>
+        <a href="shop.html" class="hover:gold mobile-nav-link">Shop</a>
+        <a href="blog.html" class="hover:gold mobile-nav-link">Blog</a> 
+      </nav>
+    </div>
+  </div>
+
+  <footer class="bg-yellow-50 border-t">
+    <div class="max-w-6xl mx-auto text-center py-8 px-4">
+      <a href="Luxe Find 3.html#home" class="flex items-center justify-center gap-2 mb-4">
+        <img src="Gemini_Generated_Image_cuo4zgcuo4zgcuo4.png" alt="Luxe Find Logo" class="h-8">
+      </a>
+      <p class="text-sm text-gray-600 mb-2">© 2025 Luxe Find. Affordable Luxury & Elegance.</p>
+      <p class="text-xs text-gray-500">Developed and designed by <a href="https://github.com/aruosatech360-png" target="_blank" class="text-blue-600 hover:underline">Aruosa Tech</a></p>
+    </div>
+  </footer>
+
+  <script src="app.js" defer></script>
+  <script>
+    // Page-specific logic for shop.html
+    function renderProducts(PRODUCTS, productStockStatus, formatCurrency, cart, updateCartDisplay) {
+      const productsEl = document.getElementById('products');
+      if (!productsEl) return;
+      productsEl.innerHTML = '';
+      PRODUCTS.forEach(p => {
+        const isInStock = productStockStatus[p.id];
+        const card = document.createElement('article');
+        card.className = 'p-4 rounded-xl bg-white card shadow-sm';
+        card.innerHTML = `
+            <div class="flex flex-col h-full">
+              <div class="h-40 rounded-lg bg-gradient-to-br from-white to-yellow-50 flex items-center justify-center mb-3 relative overflow-hidden">
+                ${p.img ? `<img src="${p.img}" alt="${p.name}" class="w-full h-full object-cover rounded-lg">` : `<div class="font-semibold gold text-lg">${p.name}</div>`}
+                ${!isInStock ? '<div class="absolute inset-0 bg-black/50 flex items-center justify-center text-white font-bold text-xl">Out of Stock</div>' : ''}
+              </div>
+              <div class="flex-1">
+                <div class="text-sm text-gray-500">${p.desc}</div>
+              </div>
+              <div class="mt-3 flex items-center justify-between">
+                <div class="font-bold">${formatCurrency(p.price)}</div>
+                ${isInStock ? `
+                  <div class="flex items-center gap-2">
+                    <button class="px-2 py-1 rounded border text-sm" data-action="dec" data-id="${p.id}">-</button>
+                    <div id="qty-${p.id}" class="w-6 text-center">${cart[p.id] || 0}</div>
+                    <button class="px-2 py-1 rounded border text-sm" data-action="inc" data-id="${p.id}">+</button>
+                  </div>` : `<span class="text-red-600 text-sm font-semibold">Out of Stock</span>`}
+              </div>
+            </div>
+        `;
+        productsEl.appendChild(card);
+      });
+
+      productsEl.addEventListener('click', e => {
+        const btn = e.target.closest('button');
+        if (!btn) return;
+        const action = btn.dataset.action;
+        const id = btn.dataset.id;
+        if (action && id && productStockStatus[id]) {
+          if (action === 'inc') cart[id] = (cart[id] || 0) + 1;
+          if (action === 'dec') cart[id] = Math.max(0, (cart[id] || 0) - 1);
+          if (cart[id] === 0) delete cart[id];
+          
+          const el = document.getElementById('qty-' + id);
+          if(el) el.textContent = cart[id] || 0;
+          updateCartDisplay();
+        }
+      });
+    }
+
+    // Mobile Menu Logic (copied for this page)
+    document.addEventListener('DOMContentLoaded', () => {
+      const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+      const mobileMenuContainer = document.getElementById('mobile-menu-container');
+      const mobileMenuPanel = document.getElementById('mobile-menu-panel');
+      const closeMobileMenuBtn = document.getElementById('close-mobile-menu');
+      const mobileMenuBackdrop = mobileMenuContainer.querySelector('.backdrop');
+      const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+
+      const openMobileMenu = () => {
+          mobileMenuContainer.classList.remove('hidden');
+          setTimeout(() => {
+              mobileMenuBackdrop.style.opacity = '1';
+              mobileMenuPanel.style.transform = 'translateX(0)';
+          }, 10);
+      };
+
+      const closeMobileMenu = () => {
+          mobileMenuBackdrop.style.opacity = '0';
+          mobileMenuPanel.style.transform = 'translateX(-100%)';
+          setTimeout(() => {
+              mobileMenuContainer.classList.add('hidden');
+          }, 300);
+      };
+
+      mobileMenuBtn.addEventListener('click', openMobileMenu);
+      closeMobileMenuBtn.addEventListener('click', closeMobileMenu);
+      mobileMenuBackdrop.addEventListener('click', closeMobileMenu);
+      mobileNavLinks.forEach(link => link.addEventListener('click', closeMobileMenu));
+    });
+  </script>
+</body>
+</html>
